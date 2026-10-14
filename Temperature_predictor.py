@@ -3,7 +3,7 @@ import pandas as pd
 import joblib
 
 # Load trained model
-model = joblib.load("temperature_predictor.pkl")
+model = joblib.load("Temperature_predictor.pkl")
 
 # App title
 st.title("🌡️ Temperature Prediction")
