@@ -13,7 +13,7 @@ st.header("Enter Weather Details")
 
 # Humidity slider
 humidity = st.slider(
-    "Humidity (%)",
+    "Humidity (%) -(Moisture)",
     min_value=0,
     max_value=100,
     value=50,
@@ -22,7 +22,7 @@ humidity = st.slider(
 
 # Precipitation slider
 precipitation = st.slider(
-    "Precipitation (mm)",
+    "Precipitation (mm) -(Rainfall)",
     min_value=0.0,
     max_value=500.0,
     value=10.0,
@@ -31,7 +31,7 @@ precipitation = st.slider(
 
 # Wind Speed slider
 wind_speed = st.slider(
-    "Wind Speed (km/h)",
+    "Wind Speed (km/h) -(Speed of Air)",
     min_value=0.0,
     max_value=150.0,
     value=10.0,
