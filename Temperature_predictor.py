@@ -12,7 +12,6 @@ st.write("Apne Study Hours aur Attendance darj karein taaki predicted marks pata
 def load_model():
     return joblib.load("student_marks_model.pkl")
 
-model = load_model()
 
 # 2. User Input ke liye Sliders banayein
 st.header("Student Details Input:")
