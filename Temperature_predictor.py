@@ -1,33 +1,53 @@
 import streamlit as st
 import pandas as pd
-import numpy as np
 import joblib
 
-# App ka Title
-st.title("🎓 Student Marks Prediction App")
-st.write("Apne Study Hours aur Attendance darj karein taaki predicted marks pata chal sakein!")
+# Load trained model
+model = joblib.load("temperature_prediction_model.pkl")
 
-# 1. Model Load karein
-@st.cache_resource
-def load_model():
-    return joblib.load("student_marks_model.pkl")
+# App title
+st.title("🌡️ Temperature Prediction")
+st.write("Predict temperature using weather conditions.")
 
+st.header("Enter Weather Details")
 
-# 2. User Input ke liye Sliders banayein
-st.header("Student Details Input:")
-study_hours = st.slider("Study Hours (Daily)", min_value=1.0, max_value=12.0, value=5.0, step=0.5)
-attendance = st.slider("Attendance (%)", min_value=10.0, max_value=100.0, value=75.0, step=1.0)
+# Humidity slider
+humidity = st.slider(
+    "Humidity (%)",
+    min_value=0,
+    max_value=100,
+    value=50,
+    step=1
+)
 
-# 3. Predict Button
-if st.button("Predict Marks"):
-    # Input data ko DataFrame me convert karein
+# Precipitation slider
+precipitation = st.slider(
+    "Precipitation (mm)",
+    min_value=0.0,
+    max_value=500.0,
+    value=10.0,
+    step=0.5
+)
+
+# Wind Speed slider
+wind_speed = st.slider(
+    "Wind Speed (km/h)",
+    min_value=0.0,
+    max_value=150.0,
+    value=10.0,
+    step=0.5
+)
+
+# Predict button
+if st.button("Predict Temperature"):
     input_data = pd.DataFrame({
-        "Study_Hours": [study_hours],
-        "Attendance": [attendance]
+        "Humidity_pct": [humidity],
+        "Precipitation_mm": [precipitation],
+        "Wind_Speed_kmh": [wind_speed]
     })
-    
-    # Prediction karein
-    predicted_marks = round(prediction[0], 2)
-    
-    # Result show karein
-    st.success(f"🎉 Predicted Marks: **{predicted_marks}**")
+
+    prediction = model.predict(input_data)
+
+    st.success(
+        f"Predicted Temperature: {prediction[0]:.2f} °C"
+    )
