@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-import joblib
+import joblib.load("Temperature_predictor_model.pkl")
 import os
 
 # ---------------- PAGE CONFIGURATION ----------------
