@@ -27,7 +27,6 @@ if st.button("Predict Marks"):
     })
     
     # Prediction karein
-    prediction = model.predict(input_data)
     predicted_marks = round(prediction[0], 2)
     
     # Result show karein
